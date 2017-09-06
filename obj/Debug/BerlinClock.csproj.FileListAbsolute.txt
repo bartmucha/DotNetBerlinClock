@@ -1,0 +1,10 @@
+C:\git_repo\DotNetBerlinClock\bin\Debug\BerlinClock.dll.config
+C:\git_repo\DotNetBerlinClock\bin\Debug\BerlinClock.dll
+C:\git_repo\DotNetBerlinClock\bin\Debug\BerlinClock.pdb
+C:\git_repo\DotNetBerlinClock\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\git_repo\DotNetBerlinClock\bin\Debug\TechTalk.SpecFlow.dll
+C:\git_repo\DotNetBerlinClock\obj\Debug\BerlinClock.csprojResolveAssemblyReference.cache
+C:\git_repo\DotNetBerlinClock\obj\Debug\BerlinClock.dll
+C:\git_repo\DotNetBerlinClock\obj\Debug\BerlinClock.pdb
+C:\git_repo\DotNetBerlinClock\bin\Debug\nunit.framework.dll
+C:\git_repo\DotNetBerlinClock\bin\Debug\nunit.framework.xml

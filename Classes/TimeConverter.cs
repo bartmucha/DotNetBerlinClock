@@ -1,15 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Globalization;
 
-namespace BerlinClock
+namespace BerlinClock.Classes
 {
-    public class TimeConverter : ITimeConverter
+  public class TimeConverter : ITimeConverter
+  {
+    public string ConvertTime(string aTime)
     {
-        public string convertTime(string aTime)
-        {
-            throw new NotImplementedException();
-        }
+      var date = DateTime.ParseExact(aTime, "H:mm:ss", CultureInfo.InvariantCulture);
+
+      var seconds = new TimeConverterSeconds().ConvertTime(aTime);
+      var hours = new TimeConverterHours().ConvertTime(aTime);
+      var minutes = new TimeConverterMinutes().ConvertTime(aTime);
+
+      return string.Join(Environment.NewLine, seconds, hours, minutes);
     }
+  }
 }
