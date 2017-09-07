@@ -6,21 +6,38 @@ namespace BerlinClock.Classes
 {
   internal class TimeConverterHours : ITimeConverter
   {
+    private readonly IATimeParser _timeParser;
     private readonly ILampRowConverter _lampRowConverter;
 
     public TimeConverterHours()
     {
+      _timeParser = new ATimeParserHours();
       _lampRowConverter = new HoursRowConverter();
     }
 
     public string ConvertTime(string aTime)
     {
-      var hours = aTime.Split(':')[(int) TimePart.Hours];
+      var hours = _timeParser.Parse(aTime);
+      return Join(Environment.NewLine,
+        _lampRowConverter.Convert(int.Parse(hours) / 5),
+        _lampRowConverter.Convert(int.Parse(hours) % 5));
+    }
+  }
 
-      var firstRowString = _lampRowConverter.Convert(int.Parse(hours) / 5);
-      var secondRowString = _lampRowConverter.Convert(int.Parse(hours) % 5);
+  class ATimeParserHours : ATimeParser
+  {
+    public ATimeParserHours() : base(TimePart.Hours) { }
+  }
 
-      return Join(Environment.NewLine, firstRowString, secondRowString);
+  class HoursRowConverter : LampRowConverter
+  {
+    private const int LampsRowCount = 4;
+
+    public HoursRowConverter() : base(LampsRowCount) { }
+
+    public override Func<int, LampState> LampSelector()
+    {
+      return any => LampState.Red;
     }
   }
 }
