@@ -62,22 +62,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BDD\BerlinClockFeatureSteps.cs" />
-    <Compile Include="Classes\LampRowConverter.cs" />
+    <Compile Include="Classes\Parsers\ATimeParser.cs" />
+    <Compile Include="Classes\Parsers\LampRowParser.cs" />
+    <Compile Include="Classes\Parsers\MinutesRowParser.cs" />
     <Compile Include="Classes\TimeConverterMinutes.cs" />
     <Compile Include="Classes\TimeConverterHours.cs" />
     <Compile Include="Classes\TimeConverterSeconds.cs" />
+    <Compile Include="Classes\Validators\ATimeValidator.cs" />
+    <Compile Include="Classes\Validators\LampRowValidator.cs" />
     <Compile Include="Enums\LampState.cs" />
     <Compile Include="Enums\TimePart.cs" />
+    <Compile Include="Interfaces\IATimeParser.cs" />
+    <Compile Include="Interfaces\IATimeValidator.cs" />
+    <Compile Include="Interfaces\ILampRowParser.cs" />
+    <Compile Include="Interfaces\ILampRowValidator.cs" />
+    <Compile Include="Interfaces\ITimeConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BDD\BerlinClockFeatureSteps.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BerlinClockFeatureSteps.feature</DependentUpon>
     </Compile>
-    <Compile Include="Classes\ITimeConverter.cs" />
     <Compile Include="Classes\TimeConverter.cs" />
-    <Compile Include="Tests\LampRowConverterSpecification.cs" />
-    <Compile Include="Tests\SecondsRowConverterSpecification.cs" />
+    <Compile Include="Tests\Parsers\ATimeParserSpecification.cs" />
+    <Compile Include="Tests\Parsers\LampRowParserSpecification.cs" />
+    <Compile Include="Tests\TimeConverterHoursSpecification.cs" />
+    <Compile Include="Tests\TimeConverterMinutesSpecification.cs" />
+    <Compile Include="Tests\TimeConverterSecondsSpecification.cs" />
+    <Compile Include="Tests\Validators\ATimeValidatorSpecification.cs" />
+    <Compile Include="Tests\Validators\LampRowValidatorSpecification.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -90,6 +103,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -5,6 +5,8 @@ namespace BerlinClock.Tests
   [TestFixture]
   class ATimeParserSpecification
   {
+    private static readonly string ParserCase = "";
+
     public void ShouldReturnHoursFromGivenTime()
     {
       

@@ -1,4 +1,5 @@
 ﻿using BerlinClock.Classes;
+using BerlinClock.Interfaces;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 

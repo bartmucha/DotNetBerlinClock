@@ -1,4 +1,4 @@
-﻿namespace BerlinClock.Classes
+﻿namespace BerlinClock.Interfaces
 {
   public interface ITimeConverter
   {

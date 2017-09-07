@@ -1,42 +1,23 @@
-﻿using System;
-using BerlinClock.Enums;
+﻿using BerlinClock.Classes.Parsers;
+using BerlinClock.Interfaces;
 
 namespace BerlinClock.Classes
 {
   internal class TimeConverterSeconds : ITimeConverter
   {
     private readonly IATimeParser _timeParser;
-    private readonly ILampRowConverter _lampRowConverter;
+    private readonly ILampRowParser _lampRowParser;
 
     public TimeConverterSeconds()
     {
       _timeParser = new ATimeParserSeconds();
-      _lampRowConverter = new SecondsRowConverter();
+      _lampRowParser = new SecondsRowParser();
     }
 
     public string ConvertTime(string aTime)
     {
       var seconds = _timeParser.Parse(aTime);
-      return _lampRowConverter.Convert(1 - (int.Parse(seconds) % 2));
-    }
-  }
-
-  class ATimeParserSeconds : ATimeParser
-  {
-    public ATimeParserSeconds() : base(TimePart.Seconds) { }
-  }
-
-  class SecondsRowConverter : LampRowConverter
-  {
-    private const int LampsRowCount = 1;
-
-    public SecondsRowConverter() : base(LampsRowCount)
-    {
-    }
-
-    public override Func<int, LampState> LampSelector()
-    {
-      return any => LampState.Yellow;
+      return _lampRowParser.Parse(1 - (int.Parse(seconds) % 2));
     }
   }
 }

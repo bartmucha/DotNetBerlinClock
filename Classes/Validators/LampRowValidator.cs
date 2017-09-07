@@ -1,12 +1,8 @@
 using System;
+using BerlinClock.Interfaces;
 
-namespace BerlinClock.Classes
+namespace BerlinClock.Classes.Validators
 {
-  interface ILampRowValidator
-  {
-    void Validate(int lampOn);
-  }
-
   class LampRowValidator : ILampRowValidator
   {
     private readonly int _lampCount;

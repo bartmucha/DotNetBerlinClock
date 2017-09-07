@@ -1,12 +1,12 @@
-﻿using BerlinClock.Classes;
+﻿using BerlinClock.Classes.Parsers;
 using BerlinClock.Enums;
 using Moq;
 using NUnit.Framework;
 
-namespace BerlinClock.Tests
+namespace BerlinClock.Tests.Parsers
 {
   [TestFixture]
-  class LampRowConverterSpecification
+  class LampRowParserSpecification
   {
     static readonly object[] ConvertCases =
     {
@@ -19,11 +19,11 @@ namespace BerlinClock.Tests
     public void ShouldReturnStringEmptyWhenLampCountIsZero([Values(0)] int lampCount, [Values(0)] int lampOnCount)
     {
       //GIVEN
-      var lampRowConverter = new Mock<LampRowConverter>(lampCount);
+      var lampRowConverter = new Mock<LampRowParser>(lampCount);
       lampRowConverter.Setup(f => f.LampSelector()).Returns(any => LampState.Yellow);
 
       //WHEN
-      var row = lampRowConverter.Object.Convert(lampOnCount);
+      var row = lampRowConverter.Object.Parse(lampOnCount);
 
       //THEN
       Assert.AreEqual(string.Empty, row);
@@ -33,11 +33,11 @@ namespace BerlinClock.Tests
     public void ShouldReturnStringEmptyWhenLampCountIsZero1(int lampCount, int lampOnCount, string convertOutput)
     {
       //GIVEN
-      var lampRowConverter = new Mock<LampRowConverter>(lampCount);
+      var lampRowConverter = new Mock<LampRowParser>(lampCount);
       lampRowConverter.Setup(f => f.LampSelector()).Returns(any => LampState.Yellow);
 
       //WHEN
-      var row = lampRowConverter.Object.Convert(lampOnCount);
+      var row = lampRowConverter.Object.Parse(lampOnCount);
 
       //THEN
       Assert.AreEqual(convertOutput, row);

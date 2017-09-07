@@ -1,8 +1,8 @@
 ﻿using System;
-using BerlinClock.Classes;
+using BerlinClock.Classes.Validators;
 using NUnit.Framework;
 
-namespace BerlinClock.Tests
+namespace BerlinClock.Tests.Validators
 {
   [TestFixture]
   class LampRowValidatorSpecification
