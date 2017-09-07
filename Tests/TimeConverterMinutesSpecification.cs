@@ -1,5 +1,5 @@
 ﻿using System;
-using BerlinClock.Classes;
+using BerlinClock.Classes.Factories;
 using NUnit.Framework;
 
 namespace BerlinClock.Tests
@@ -29,7 +29,7 @@ namespace BerlinClock.Tests
     public void ShouldLitRedAndYellowLampsAppropriatlyToMinutesInFirstRowAndHaveAllLampsOffInSecondRowWhenMinutesDevidesBy5WithoutReminder(string minutes, string firstRowOutput, string secondRowOutput)
     {
       //GIVEN
-      var timeConverterMinutes = new TimeConverterMinutes();
+      var timeConverterMinutes = ITimeConverterFactory.CreateTimeConverterMinutes();
 
       //WHEN
       var minutesTime = timeConverterMinutes.ConvertTime(minutes);
@@ -42,7 +42,7 @@ namespace BerlinClock.Tests
     public void ShouldLitRedAndYellowLampsAppropriatlyToMinutesInBothRowsWhenMinutesDevidesBy5WithReminder(string minutes, string firstRowOutput, string secondRowOutput)
     {
       //GIVEN
-      var timeConverterMinutes = new TimeConverterMinutes();
+      var timeConverterMinutes = ITimeConverterFactory.CreateTimeConverterMinutes();
 
       //WHEN
       var minutesTime = timeConverterMinutes.ConvertTime(minutes);

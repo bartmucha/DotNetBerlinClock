@@ -1,23 +1,22 @@
-﻿using BerlinClock.Classes.Parsers;
-using BerlinClock.Interfaces;
+﻿using BerlinClock.Interfaces;
 
 namespace BerlinClock.Classes
 {
   internal class TimeConverterSeconds : ITimeConverter
   {
     private readonly IATimeParser _timeParser;
-    private readonly ILampRowParser _lampRowParser;
+    private readonly ILampRowParser _rowParser;
 
-    public TimeConverterSeconds()
+    public TimeConverterSeconds(IATimeParser timeParser, ILampRowParser rowParser)
     {
-      _timeParser = new ATimeParserSeconds();
-      _lampRowParser = new SecondsRowParser();
+      _timeParser = timeParser;
+      _rowParser = rowParser;
     }
 
     public string ConvertTime(string aTime)
     {
       var seconds = _timeParser.Parse(aTime);
-      return _lampRowParser.Parse(1 - (int.Parse(seconds) % 2));
+      return _rowParser.Parse(1 - (int.Parse(seconds) % 2));
     }
   }
 }

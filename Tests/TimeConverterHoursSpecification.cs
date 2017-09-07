@@ -1,5 +1,5 @@
 ﻿using System;
-using BerlinClock.Classes;
+using BerlinClock.Classes.Factories;
 using NUnit.Framework;
 
 namespace BerlinClock.Tests
@@ -30,7 +30,7 @@ namespace BerlinClock.Tests
       ShouldLitRedLampsAppropriatlyToHoursInFirstRowAndHaveAllLampsOffInSecondRowWhenHoursDevidesBy5WithoutReminder(string hours, string firstRowOutput, string secondRowOutput)
     {
       //GIVEN
-      var timeConverterHours = new TimeConverterHours();
+      var timeConverterHours = ITimeConverterFactory.CreateTimeConverterHours();
 
       //WHEN
       var hoursTime = timeConverterHours.ConvertTime(hours);
@@ -46,7 +46,7 @@ namespace BerlinClock.Tests
       ShouldLitRedLampsAppropriatlyToHoursInBothRowsWhenHoursDevidesBy5WithReminder(string hours, string firstRowOutput, string secondRowOutput)
     {
       //GIVEN
-      var timeConverterHours = new TimeConverterHours();
+      var timeConverterHours = ITimeConverterFactory.CreateTimeConverterHours();
 
       //WHEN
       var hoursTime = timeConverterHours.ConvertTime(hours);

@@ -1,6 +1,6 @@
 ﻿namespace BerlinClock.Interfaces
 {
-  interface IATimeValidator
+  public interface IATimeValidator
   {
     void Validate(string aTime);
   }

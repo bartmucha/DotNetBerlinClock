@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BDD\BerlinClockFeatureSteps.cs" />
+    <Compile Include="Classes\Factories\ITimeConverterFactory.cs" />
     <Compile Include="Classes\Parsers\ATimeParser.cs" />
     <Compile Include="Classes\Parsers\LampRowParser.cs" />
     <Compile Include="Classes\Parsers\MinutesRowParser.cs" />

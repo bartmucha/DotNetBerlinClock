@@ -1,4 +1,4 @@
-﻿using BerlinClock.Classes;
+﻿using BerlinClock.Classes.Factories;
 using NUnit.Framework;
 
 namespace BerlinClock.Tests
@@ -10,7 +10,7 @@ namespace BerlinClock.Tests
     public void ShouldLitYellowLampWhenSecondIsEven([Values("00:00:00", "00:00:20")] string seconds)
     {
       //GIVEN
-      var timeConverterSeconds = new TimeConverterSeconds();
+      var timeConverterSeconds = ITimeConverterFactory.CreateTimeConverterSeconds();
 
       //WHEN
       var secondsTime = timeConverterSeconds.ConvertTime(seconds);
@@ -23,7 +23,7 @@ namespace BerlinClock.Tests
     public void ShouldLitYellowLampWhenSecondIsOdd([Values("00:00:01", "00:00:15", "00:00:59")] string seconds)
     {
       //GIVEN
-      var timeConverterSeconds = new TimeConverterSeconds();
+      var timeConverterSeconds = ITimeConverterFactory.CreateTimeConverterSeconds();
 
       //WHEN
       var secondsTime = timeConverterSeconds.ConvertTime(seconds);

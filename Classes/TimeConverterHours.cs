@@ -1,5 +1,4 @@
 ﻿using System;
-using BerlinClock.Classes.Parsers;
 using BerlinClock.Interfaces;
 using static System.String;
 
@@ -8,20 +7,20 @@ namespace BerlinClock.Classes
   internal class TimeConverterHours : ITimeConverter
   {
     private readonly IATimeParser _timeParser;
-    private readonly ILampRowParser _lampRowParser;
+    private readonly ILampRowParser _rowParser;
 
-    public TimeConverterHours()
+    public TimeConverterHours(IATimeParser timeParser, ILampRowParser rowParser)
     {
-      _timeParser = new ATimeParserHours();
-      _lampRowParser = new HoursRowParser();
+      _timeParser = timeParser;
+      _rowParser = rowParser;
     }
 
     public string ConvertTime(string aTime)
     {
       var hours = _timeParser.Parse(aTime);
       return Join(Environment.NewLine,
-        _lampRowParser.Parse(int.Parse(hours) / 5),
-        _lampRowParser.Parse(int.Parse(hours) % 5));
+        _rowParser.Parse(int.Parse(hours) / 5),
+        _rowParser.Parse(int.Parse(hours) % 5));
     }
   }
 }

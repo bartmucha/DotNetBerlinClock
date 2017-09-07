@@ -1,4 +1,4 @@
-﻿using BerlinClock.Classes;
+﻿using BerlinClock.Classes.Factories;
 using BerlinClock.Interfaces;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
@@ -8,7 +8,7 @@ namespace BerlinClock.BDD
   [Binding]
   public class TheBerlinClockSteps
   {
-    private readonly ITimeConverter _berlinClock = new TimeConverter();
+    private readonly ITimeConverter _berlinClock = ITimeConverterFactory.CreateTimeConverter();
     private string _time;
 
     [When(@"the time is ""(.*)""")]
